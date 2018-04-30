@@ -9,6 +9,9 @@ var Message = require('azure-iot-device').Message;
 // String containing Hostname, Device Id & Device Key in the following formats:
 //  "HostName=<iothub_host_name>;DeviceId=<device_id>;SharedAccessKey=<device_key>"
 var connectionString = process.env.DEVICE_CONNECTION_STRING;
+var mqttServer = process.env.MQTT_SERVER; // i.e. 'mqtt://test.mosquitto.org:1883'
+var mqttTopic = process.env.MQTT_TOPIC; // i.e. '/v1/flex/001F4808EA60/interesting_events'
+
 console.log('Connection String:\n' + connectionString);
 
 if(connectionString == null || typeof(connectionString) == undefined || connectionString.length < 52)
@@ -50,9 +53,9 @@ function sendDataToIoTHub(message)
   client.sendEvent(new Message(data), printErrorFor('send event'));
 }
 
-var mqttClient = mqtt.connect('mqtt://test.mosquitto.org:1883');  
+var mqttClient = mqtt.connect(mqttServer);  
 mqttClient.on('connect', () => {  
-  mqttClient.subscribe('/v1/flex/001F4808EA60/interesting_events');
+  mqttClient.subscribe(mqttTopic);
 });
 mqttClient.on('message', (topic, message) => {  
   console.log(`Received message: '${message}' on topic '${topic}'`);
