@@ -19,7 +19,7 @@ The image is published to [Docker HUB](https://hub.docker.com/r/astaykov/mqtt-br
 ## Run it on Azure Container Instance (ACI)
 You can quickly test the bridge with the following command
 ```
-az container create -g <RESOURCE_GROUP> -n <NAME_OF_THE_SERVICE> -e 'DEVICE_CONNECTION_STRING=<YOUR_CONN_STRING>' -e 'MQTT_SERVER=<MQTT_SERVER>' -e 'MQTT_TOPIC=<MQTT_TOPIC>' --image astaykov/mqtt-bridge --cpu 1 --memory 0.5
+az container create -g <RESOURCE_GROUP> -n <NAME_OF_THE_SERVICE> -e 'DEVICE_CONNECTION_STRING=<YOUR_CONN_STRING>' 'MQTT_SERVER=<MQTT_SERVER>' 'MQTT_TOPIC=<MQTT_TOPIC>' --image astaykov/mqtt-bridge --cpu 1 --memory 0.5
 ```
 Where the placeholders have following meaning
 
