@@ -14,12 +14,12 @@ The generic MQTT client part as well as IoT Hub Connection string are configured
  * **MQTT_TOPIC** - relative address of your MQTT Topic (i.e. /v1/flex/001F4808EA60/interesting_events)
 
 ## Docker HUB
-The image is published to [Docker HUB](https://hub.docker.com/r/astaykov/mqtt-bridge/)
+The image is published to [Docker HUB](https://hub.docker.com/r/astaykov/mqtt-bridge-iothub/)
 
 ## Run it on Azure Container Instance (ACI)
 You can quickly test the bridge with the following command
 ```
-az container create -g <RESOURCE_GROUP> -n <NAME_OF_THE_SERVICE> -e 'DEVICE_CONNECTION_STRING=<YOUR_CONN_STRING>' 'MQTT_SERVER=<MQTT_SERVER>' 'MQTT_TOPIC=<MQTT_TOPIC>' --image astaykov/mqtt-bridge --cpu 1 --memory 0.5
+az container create -g <RESOURCE_GROUP> -n <NAME_OF_THE_SERVICE> -e 'DEVICE_CONNECTION_STRING=<YOUR_DEVICE_CONN_STRING>' 'MQTT_SERVER=<MQTT_SERVER>' 'MQTT_TOPIC=<MQTT_TOPIC>' --image astaykov/mqtt-bridge --cpu 1 --memory 0.5
 ```
 Where the placeholders have following meaning
 
